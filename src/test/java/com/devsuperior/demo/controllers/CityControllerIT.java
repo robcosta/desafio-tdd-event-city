@@ -42,24 +42,24 @@ public class CityControllerIT {
 		result.andExpect(jsonPath("$[1].name").value("Belém"));
 		result.andExpect(jsonPath("$[2].name").value("Brasília"));
 	}
-//	
-//	@Test
-//	public void insertShouldInsertResource() throws Exception {
-//
-//		CityDTO dto = new CityDTO(null, "Recife");
-//		String jsonBody = objectMapper.writeValueAsString(dto);
-//		
-//		ResultActions result =
-//				mockMvc.perform(post("/cities")
-//					.content(jsonBody)
-//					.contentType(MediaType.APPLICATION_JSON)
-//					.accept(MediaType.APPLICATION_JSON));
-//		
-//		result.andExpect(status().isCreated());
-//		result.andExpect(jsonPath("$.id").exists());
-//		result.andExpect(jsonPath("$.name").value("Recife"));
-//	}
-//
+	
+	@Test
+	public void insertShouldInsertResource() throws Exception {
+
+		CityDTO dto = new CityDTO(null, "Recife");
+		String jsonBody = objectMapper.writeValueAsString(dto);
+		
+		ResultActions result =
+				mockMvc.perform(post("/cities")
+					.content(jsonBody)
+					.contentType(MediaType.APPLICATION_JSON)
+					.accept(MediaType.APPLICATION_JSON));
+		
+		result.andExpect(status().isCreated());
+		result.andExpect(jsonPath("$.id").exists());
+		result.andExpect(jsonPath("$.name").value("Recife"));
+	}
+
 //	@Test
 //	public void deleteShouldReturnNoContentWhenIndependentId() throws Exception {		
 //		
