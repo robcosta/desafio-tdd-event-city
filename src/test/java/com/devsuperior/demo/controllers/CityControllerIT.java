@@ -13,7 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.devsuperior.demo.dto.CityDTO;
@@ -60,18 +59,18 @@ public class CityControllerIT {
 		result.andExpect(jsonPath("$.name").value("Recife"));
 	}
 
-//	@Test
-//	public void deleteShouldReturnNoContentWhenIndependentId() throws Exception {		
-//		
-//		Long independentId = 5L;
-//		
-//		ResultActions result =
-//				mockMvc.perform(delete("/cities/{id}", independentId));
-//		
-//		
-//		result.andExpect(status().isNoContent());
-//	}
-//
+	@Test
+	public void deleteShouldReturnNoContentWhenIndependentId() throws Exception {		
+		
+		Long independentId = 5L;
+		
+		ResultActions result =
+				mockMvc.perform(delete("/cities/{id}", independentId));
+		
+		
+		result.andExpect(status().isNoContent());
+	}
+
 //	@Test
 //	public void deleteShouldReturnNotFoundWhenNonExistingId() throws Exception {		
 //

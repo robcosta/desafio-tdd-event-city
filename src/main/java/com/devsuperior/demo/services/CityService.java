@@ -3,6 +3,7 @@ package com.devsuperior.demo.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,5 +31,16 @@ public class CityService {
 		City entity = new City();
 		entity.setName(dto.getName());
 		return new CityDTO(repository.save(entity));
+	}
+
+	public void delete(Long id) {
+//		if(!repository.existsById(id)) {
+//			throw new ResourceNotFoundException("Recurso não encontrado");			
+//		}
+		try {
+			repository.deleteById(id);
+		} catch (DataIntegrityViolationException e) {
+			//throw new DatabaseException("Falha de integridade referencial");
+		}
 	}
 }
