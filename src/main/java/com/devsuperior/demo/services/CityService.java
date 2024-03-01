@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.devsuperior.demo.dto.CityDTO;
 import com.devsuperior.demo.entities.City;
 import com.devsuperior.demo.repositories.CityRepository;
+import com.devsuperior.demo.services.exceptions.DatabaseException;
 import com.devsuperior.demo.services.exceptions.ResourceNotFoundException;
 
 
@@ -41,7 +42,7 @@ public class CityService {
 		try {
 			repository.deleteById(id);
 		} catch (DataIntegrityViolationException e) {
-			//throw new DatabaseException("Falha de integridade referencial");
+			throw new DatabaseException("Falha de integridade referencial");
 		}
 	}
 }
